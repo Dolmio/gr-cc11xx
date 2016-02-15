@@ -19,7 +19,7 @@ class qa_cc11xx_deframer_bb (gr_unittest.TestCase):
         sync_length = 2
         payload = [ord(c) for c in payload_str]
 
-        strobe = blocks.message_strobe(pmt.cons(pmt.PMT_NIL, pmt.to_pmt(list(payload))), 200)
+        strobe = blocks.message_strobe(pmt.cons(pmt.PMT_NIL, pmt.to_pmt(payload)), 200)
         encoder = cc11xx_encoder.cc11xx_encoder(preamble=[int(preamble, 2)], syncword=[sync1, sync2], whitening=whitening, crc=encode_crc)
         pdu_to_stream = blocks.pdu_to_tagged_stream(blocks.byte_t, "packet_len")
         debug = blocks.message_debug()
