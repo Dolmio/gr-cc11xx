@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<block>
+  <name>CC11XX Encoder</name>
+  <key>cc11xx_cc11xx_encoder</key>
+  <category>cc11xx</category>
+  <import>import cc11xx.cc11xx_encoder</import>
+  <make>cc11xx.cc11xx_encoder.cc11xx_encoder($preamble, $syncword, $has_whitening, $has_crc)</make>
+    <param>
+        <name>Preamble</name>
+        <key>preamble</key>
+        <value>[0x55]</value>
+        <type>int_vector</type>
+    </param>
+
+    <param>
+        <name>Syncword</name>
+        <key>syncword</key>
+        <value>[0xca]</value>
+        <type>int_vector</type>
+    </param>
+
+    <param>
+        <name>Whitening</name>
+        <key>has_whitening</key>
+        <type>enum</type>
+        <option>
+            <name>Yes</name>
+            <key>True</key>
+        </option>
+        <option>
+            <name>No</name>
+            <key>False</key>
+        </option>
+    </param>
+
+    <param>
+        <name>CRC</name>
+        <key>has_crc</key>
+        <type>enum</type>
+        <option>
+            <name>Yes</name>
+            <key>True</key>
+        </option>
+        <option>
+            <name>No</name>
+            <key>False</key>
+        </option>
+    </param>
+
+    <sink>
+        <name>in</name>
+        <type>message</type>
+    </sink>
+
+    <source>
+        <name>out</name>
+        <type>message</type>
+    </source>
+
+
+</block>

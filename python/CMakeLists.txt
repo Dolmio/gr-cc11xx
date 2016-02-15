@@ -30,7 +30,10 @@ endif()
 ########################################################################
 GR_PYTHON_INSTALL(
     FILES
+    cc11xx_encoder.py
+    cc11xx_packet.py
     __init__.py
+
     DESTINATION ${GR_PYTHON_DIR}/cc11xx
 )
 
