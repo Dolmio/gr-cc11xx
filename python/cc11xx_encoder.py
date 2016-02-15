@@ -39,7 +39,11 @@ class cc11xx_encoder(gr.basic_block):
         self.whitening = whitening
 
     def handle_msg(self, msg_pmt):
-        msg_str = pmt.to_python(pmt.cdr(msg_pmt))
-        packet_buffer = cc11xx_packet.create(msg_str, preamble= self.preamble, syncword=self.syncword, crc=self.crc, whitening=self.whitening)
+        msg_list = pmt.to_python(pmt.cdr(msg_pmt))
+        #when msg_list comes from pad source it is numpy.ndarray
+        #we prefer giving non numpy objects to packet create
+        if isinstance(msg_list, numpy.ndarray):
+             msg_list =  msg_list.tolist()
+        packet_buffer = cc11xx_packet.create(msg_list, preamble= self.preamble, syncword=self.syncword, crc=self.crc, whitening=self.whitening)
         packet_arr = numpy.frombuffer(packet_buffer, dtype='uint8')
         self.message_port_pub(pmt.intern('out'), pmt.cons(pmt.PMT_NIL, pmt.to_pmt(packet_arr)))
