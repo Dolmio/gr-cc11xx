@@ -4,7 +4,7 @@
   <key>cc11xx_cc11xx_encoder</key>
   <category>cc11xx</category>
   <import>import cc11xx.cc11xx_encoder</import>
-  <make>cc11xx.cc11xx_encoder.cc11xx_encoder($preamble, $syncword, $has_whitening, $has_crc)</make>
+  <make>cc11xx.cc11xx_encoder.cc11xx_encoder($preamble, $syncword, $has_crc, $has_whitening)</make>
     <param>
         <name>Preamble</name>
         <key>preamble</key>
