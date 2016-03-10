@@ -38,10 +38,24 @@ pn9_table = [
     0x1f, 0xde, 0xa1
 ]
 
+#Code taken from CRC app note: http://www.ti.com/lit/an/swra111d/swra111d.pdf
+def calc_crc_step(prev_crc, byte):
+    crc_poly = 0x8005
+    for i in range(8):
+        if((prev_crc & 0x8000) >> 8) ^ (byte & 0x80):
+            prev_crc = (prev_crc << 1) ^ crc_poly
+        else:
+            prev_crc = (prev_crc << 1)
+        byte <<= 1
+    return prev_crc
 
+
+def crc16(buffer):
+    crc = reduce(calc_crc_step, buffer, 0xFFFF)
+    return [(crc >> 8) & 0xff, crc & 0xff]
 
 #this a custom crc-calculation implemented in the radio firmware by SpaceFactory
-def crc16(buffer):
+def crc16_aalto(buffer):
     crc16_lookup = [
         0x0000, 0x1081, 0x2102, 0x3183,
         0x4204, 0x5285, 0x6306, 0x7387,

@@ -54,8 +54,8 @@ class qa_cc11xx_deframer_bb (gr_unittest.TestCase):
     def test_encode_decode_with_whitening (self):
         self.encode_decode_test(payload_str="TEST", whitening=True)
 
-    def test_encode_decode_with_crc_in_encode (self):
-        self.encode_decode_test(payload_str="TEST", whitening=False, encode_crc=True)
+    def test_encode_decode_with_crc(self):
+        self.encode_decode_test(payload_str="TEST", whitening=False, encode_crc=True, decode_crc=True)
 
 if __name__ == '__main__':
     gr_unittest.main ()
