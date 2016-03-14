@@ -18,5 +18,5 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    cc11xx_cc11xx_deframer_bb.xml cc11xx_cc11xx_encoder.xml DESTINATION share/gnuradio/grc/blocks
+    cc11xx_cc11xx_deframer_bb.xml cc11xx_cc11xx_encoder.xml cc11xx_data_concatenator.xml DESTINATION share/gnuradio/grc/blocks
 )

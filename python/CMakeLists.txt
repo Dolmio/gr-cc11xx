@@ -32,6 +32,7 @@ GR_PYTHON_INSTALL(
     FILES
     cc11xx_encoder.py
     cc11xx_packet.py
+    data_concatenator.py
     __init__.py
 
     DESTINATION ${GR_PYTHON_DIR}/cc11xx
@@ -45,3 +46,4 @@ include(GrTest)
 set(GR_TEST_TARGET_DEPS gnuradio-cc11xx)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
 GR_ADD_TEST(qa_cc11xx_deframer_bb ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_cc11xx_deframer_bb.py)
+GR_ADD_TEST(qa_data_concatenator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_data_concatenator.py)
